@@ -6,6 +6,7 @@ var endDate = "";
 
 
 $(document).ready(function () {
+    
     APICall();
 
 });
@@ -20,11 +21,17 @@ function APICall() {
     }); */
     //https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=4d7b6be708514fb38ba42159116c9400&q=Arizona&fq=5
     //https://api.nytimes.com/svc/search/v2/articlesearch.json?4d7b6be708514fb38ba42159116c9400&q=Arizona&fq=5
-    if(true){
+    if(searchTerm !== ""){
         url += '&q='+ searchTerm;
     }
-    if(true){
+    if(numberRec !== ""){
         url += '&fq='+ numberRec;
+    }
+    if(startDate !== ""){
+        url += '&begin_date='+ startDate;
+    }
+    if(endDate !== ""){
+        url += '&end_date='+ endDate;
     }
     console.log(url);
 
