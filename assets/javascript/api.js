@@ -1,5 +1,5 @@
 var apiKey = "4d7b6be708514fb38ba42159116c9400";
-var searchTerm = "Arizona";
+var searchTerm = "new york";
 var numberRec = "5";
 var startDate = "20000816"; ///YYYYMMDD
 var endDate = "";
@@ -7,8 +7,6 @@ var endDate = "";
 
 $(document).ready(function () {
     APICall();
-
-
 
 });
 
@@ -41,6 +39,7 @@ function APICall() {
     }).done(function (result) {
         console.log(result);
         console.log(result.response.docs[0]);
+        CreateDiv(result.response.docs);
 
     }).fail(function (err) {
         throw err;
@@ -48,6 +47,16 @@ function APICall() {
 }
 
 
-function CreateDiv(story) {
-    
+function CreateDiv(stories) {
+    for(var i = 0; i < stories.length; i++){
+        var storyDiv = $("<div>");
+        var heading = $("<h3>").text(i+1+ " " +stories[i].headline.main);
+        var by = $("<h5>").text(stories[i].byline.original);
+
+        storyDiv.append(heading);
+        storyDiv.append(by);
+        $("body").append(storyDiv);
+        
+
+    }
 }
